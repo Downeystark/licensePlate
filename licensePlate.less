@@ -1,0 +1,50 @@
+/* 自定义车牌号键盘 */
+
+.block-license-plate-keyboard {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 10px;
+  z-index: 12;
+  background: #d1d5d9;
+}
+
+.license-delete {
+  position: absolute;
+  bottom: 12px;
+  right: 10px;
+}
+
+.license-list {
+  > li {
+    display: flex;
+    justify-content: space-between;
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+    i {
+      display: inline-block;
+      width: 24px;
+      height: 35px;
+      pointer-events: none;
+    }
+    text {
+      border-radius: 3px;
+      background-color: #f3f3f3;
+      text-align: center;
+      display: inline-block;
+      width: 24px;
+      height: 35px;
+      line-height: 35px;
+      color: #333;
+      font-size: .9rem;
+      &:not(:last-child) {
+
+      }
+    }
+  }
+}
+
+
+

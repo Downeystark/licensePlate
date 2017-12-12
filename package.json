@@ -1,0 +1,12 @@
+{
+  "name": "licenseplate",
+  "version": "1.0.0",
+  "description": "车牌号键盘",
+  "main": "licensePlate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-js": "babel licensePlate.js -o licensePlate.es5.js"
+  },
+  "author": "downeyin",
+  "license": "ISC"
+}

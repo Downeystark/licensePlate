@@ -1,0 +1,12 @@
+{
+  "presets": [
+    "es2015",
+    "react",
+    "stage-3"
+  ],
+  "plugins": [
+    "transform-object-assign",
+    "transform-class-properties",
+    "transform-private-properties"
+  ]
+}

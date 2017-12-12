@@ -1,0 +1,187 @@
+// Variables
+@grayLight: #999;
+@grayLighter: #eee;
+@white: #fff;
+@linkColor: #08c;
+@btnPrimaryBackground: @linkColor;
+@orange: #f89406;
+@infoBackground: #d9edf7;
+@baseLineHeight: 18px;
+@baseBorderRadius: 4px;
+
+/* 最大行数，火狐等浏览器需要兼容定义最大行数的高度 */
+.lib-vertical-line(@line: 2, @height:auto) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @line;
+  -moz-line-clamp: @line;
+  -o-line-clamp: @line;
+  max-height: @height;
+}
+
+/* 动态高度垂直居中 */
+.lib-vertical-align-center() {
+  .transform(translate(0, -50%));
+}
+
+/* 透明度 */
+.lib-rgba(@rgba_a:.4,@rgb_b:40) {
+  filter: alpha(opacity=@rgb_b);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=@{rgb_b})";
+  opacity: @rgb_a;
+}
+
+/* 列格式 */
+.lib-column(@c1:3,@c2:310px,@c3:10px,@c4:1px solid #ccc) {
+  column-count: @c1;
+  column-width: @c2;
+  column-gap: @c3;
+  column-rule: @c4;
+  -webkit-column-count: @c1;
+  -webkit-column-width: @c2;
+  -webkit-column-gap: @c3;
+  -webkit-column-rule: @c4;
+  -moz-column-count: @c1;
+  -moz-column-width: @c2;
+  -moz-column-gap: @c3;
+  -moz-column-rule: @c4;
+}
+
+.outline(@outline:1px solid #699,@outline1:-10px) {
+  outline: @outline;
+  outline-offset: @outline1;
+}
+
+/* 按钮点燃效果 */
+.lib-buttonBackgroundActive(@startColor, @endColor) {
+  background-color: @startColor !important;
+  &:active, &.active, &.disabled, &[disabled] {
+    background-color: @endColor !important;
+  }
+  &:active,
+  &.active {
+    background-color: darken(@endColor, 10%) e("\9");
+  }
+}
+
+// Button backgrounds
+.lib-buttonBackground(@startColor, @endColor) {
+  .gradientBar(@startColor, @endColor);
+  .reset-filter();
+  &:hover, &:active, &.active, &.disabled, &[disabled] {
+    background-color: @endColor;
+  }
+  &:active,
+  &.active {
+    background-color: darken(@endColor, 10%) e("\9");
+  }
+}
+
+/* sticky浮动定位 */
+.lib-position-sticky(@top:0) {
+  position: -webkit-sticky;
+  position: sticky;
+  top: @top;
+  z-index: 5;
+}
+
+/* 布局 */
+.lib-layout(@top: 0,@right: 0,@bottom: 0,@left: 0,@width: inherit,@margin: auto) {
+  top: @top;
+  left: @left;
+  bottom: @bottom;
+  right: @right;
+  width: @width;
+  margin: @margin;
+}
+
+/**
+ * author downey
+ * time 2017-1-23 09:55:11
+ * version 1.0.0
+ */
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: 100% Microsoft yahei;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img {
+  vertical-align: top;
+  line-height: 0;
+  text-indent: -9999px;
+}
+
+input {
+  vertical-align: middle;
+  -webkit-appearance: none;
+}
+
+a, button, input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+textarea {
+  -webkit-appearance: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* 图标 */
+.lib-icon(@width:1.2rem,@height:1.2rem,@display:inline-block) {
+  width: @width;
+  height: @height;
+  display: @display;
+}

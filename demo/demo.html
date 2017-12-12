@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>车牌键盘输入器</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+</head>
+<link rel="stylesheet" href="../build.min.css">
+<link rel="stylesheet" href="../licensePlate.min.css">
+<body>
+
+<input class="test" type="text" placeholder="">
+
+<script>
+
+    window.onload = function () {
+
+        let licensePlates = new licensePlate({
+            onPress: (value) => {
+                console.log(value);
+                $('.test').val(value.join(''));
+            },
+        });
+
+        $('.test').click(function () {
+            licensePlates.show();
+        })
+
+    }
+
+</script>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="../licensePlate.es5.js"></script>
+
+</body>
+</html>
