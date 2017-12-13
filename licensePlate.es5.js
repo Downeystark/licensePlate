@@ -20,15 +20,16 @@ var licensePlate = function () {
     _createClass(licensePlate, [{
         key: 'Init',
         value: function Init() {
-            if ($('body').find('.block-license-plate-keyboard').length === 0) this.createDom();
+            if ($('body').find('.block-license-plate-keyboard.' + this.className).length === 0) this.createDom();
         }
     }, {
         key: 'createDom',
         value: function createDom() {
             var _this = this;
 
-            $('.block-license-plate-keyboard').remove();
-            $('body').append(this.box[0]);
+            $('.block-license-plate-keyboard.' + this.className).remove();
+            this.box = $('<div style="display: none;"></div>').addClass('block-license-plate-keyboard ' + this.className);
+            $('body').append(this.box);
             this.step = 0;
             this.value = [];
 
@@ -47,6 +48,7 @@ var licensePlate = function () {
                     _this.onPress(_this.value);
                     _this.prev();
                 }
+                return false;
             });
 
             return this;
@@ -76,11 +78,13 @@ var licensePlate = function () {
         key: 'show',
         value: function show() {
             this.box.slideDown();
+            return this;
         }
     }, {
         key: 'hide',
         value: function hide() {
             this.box.slideUp();
+            return this;
         }
     }, {
         key: 'next',
@@ -93,6 +97,16 @@ var licensePlate = function () {
         value: function prev() {
             this.step--;
             this.openStep();
+            return this;
+        }
+    }, {
+        key: 'go',
+        value: function go() {
+            var step = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+            this.step = step;
+            this.openStep();
+            return this;
         }
     }]);
 
@@ -100,7 +114,8 @@ var licensePlate = function () {
 }();
 
 licensePlate.DEFAULTS = {
-    box: $('<div class="block-license-plate-keyboard"></div>'),
+    box: $('<div style="display: none;"></div>'),
+    className: 'license-plate-keyboard-default',
     level: [['京,津,翼,鲁,晋,蒙,辽,吉,黑,沪', '苏,浙,皖,闽,赣,豫,鄂,湘,粤,桂', ',渝,川,贵,云,藏,陜,甘,青,', ',,琼,新,港,澳,台,宁,,'], ['Q,W,E,R,T,Y,U,I,O,P', 'A,S,D,F,G,H,J,K,L,Z', 'X,C,V,B,N,M,,,,'], ['1,2,3,4,5,6,7,8,9,0', 'Q,W,E,R,T,Y,U,P,A,S', 'D,F,G,H,J,K,L,Z,X,C', 'V,B,N,M,,,,,,'], 2, 2, 2, ['1,2,3,4,5,6,7,8,9,0', 'Q,W,E,R,T,Y,U,P,A,S', 'D,F,G,H,J,K,L,Z,X,C', 'V,B,N,M,,,学,领,,']],
     value: [],
     isOpen: true,

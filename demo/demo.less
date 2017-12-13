@@ -1,0 +1,51 @@
+/* demo样式 */
+
+.demo1, .demo2 {
+  padding: 20px;
+}
+
+.input_li {
+  border-bottom: 1px solid rgba(221, 221, 221, 1);
+  display: flex;
+  height: 3rem;
+  margin-top: 0.8rem;
+  justify-content: space-between;
+  align-items: center;
+  label {
+    color: #333333;
+  }
+  .put {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 0.9rem;
+    &::placeholder {
+      color: #333;
+    }
+    text-align: right;
+  }
+  span {
+    color: #4076ff;
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+  .car_input {
+    display: flex;
+    justify-content: flex-end;
+    input {
+      display: block;
+      box-sizing: border-box;
+      height: 1.8rem;
+      width: 1.8rem;
+      background-color: #fff;
+      outline: none;
+      border: 1px solid #D2D2D2;
+      border-radius: 4px;
+      text-align: center;
+      margin-right: 0.2rem;
+      &.active {
+        border: 1px solid #4076ff;
+      }
+    }
+  }
+}

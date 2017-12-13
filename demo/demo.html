@@ -7,23 +7,74 @@
 </head>
 <link rel="stylesheet" href="../build.min.css">
 <link rel="stylesheet" href="../licensePlate.min.css">
+<link rel="stylesheet" href="../demo/demo.min.css">
 <body>
 
-<input class="test" type="text" placeholder="">
+<div class="demo1">
+    <h3>例子1：</h3>
+    <input class="input_one" type="text" placeholder="">
+</div>
+
+<div class="demo2">
+    <h3>例子2：</h3>
+    <div class="input_li">
+        <label class="icon-user">车牌号：</label>
+        <div class="car_input">
+            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+            <input class="car-plate" readonly="readonly" type="text" maxlength="1" placeholder="">
+        </div>
+    </div>
+</div>
 
 <script>
 
     window.onload = function () {
 
-        let licensePlates = new licensePlate({
+
+        /* 注册键盘1 */
+        var licensePlates1 = new licensePlate({
+            className: 'demo_one',
             onPress: (value) => {
                 console.log(value);
-                $('.test').val(value.join(''));
+                $('.input_one').val(value.join(''));
             },
         });
 
-        $('.test').click(function () {
-            licensePlates.show();
+        $('.input_one').click(function () {
+            licensePlates1.show();
+        });
+
+
+        /* 注册键盘2 */
+        var licensePlates = new licensePlate({
+            className: 'demo_two',
+            onPress: (value) => {
+                console.log(value);
+                $('.car-plate').removeClass('active').eq(licensePlates.step).addClass('active').val(value[licensePlates.step]);
+            },
+        });
+
+        $('.car-plate').click(function (e) {
+            $('.car-plate').removeClass('active');
+            licensePlates.go($(this).addClass('active').index()).show();
+        });
+
+        $(document).click(function (e) {
+            console.log(e.target.className);
+            // 收起键盘2
+            if (e.target.className !== 'car-plate active') {
+                $('.car-plate').removeClass('active');
+                licensePlates.hide();
+            }
+            // 收起键盘1
+            if (e.target.className !== 'input_one') {
+                licensePlates1.hide();
+            }
         })
 
     }

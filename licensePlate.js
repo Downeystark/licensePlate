@@ -1,7 +1,8 @@
 class licensePlate {
 
     static DEFAULTS = {
-        box: $('<div class="block-license-plate-keyboard"></div>'),
+        box: $('<div style="display: none;"></div>'),
+        className: 'license-plate-keyboard-default',
         level: [
             [
                 '京,津,翼,鲁,晋,蒙,辽,吉,黑,沪',
@@ -50,13 +51,14 @@ class licensePlate {
     }
 
     Init() {
-        if ($('body').find('.block-license-plate-keyboard').length === 0) this.createDom();
+        if ($('body').find('.block-license-plate-keyboard.' + this.className).length === 0) this.createDom();
 
     }
 
     createDom() {
-        $('.block-license-plate-keyboard').remove();
-        $('body').append(this.box[0]);
+        $('.block-license-plate-keyboard.' + this.className).remove();
+        this.box = $('<div style="display: none;"></div>').addClass('block-license-plate-keyboard ' + this.className);
+        $('body').append(this.box);
         this.step = 0;
         this.value = [];
 
@@ -75,6 +77,7 @@ class licensePlate {
                 this.onPress(this.value);
                 this.prev();
             }
+            return false;
         });
 
         return this;
@@ -103,10 +106,12 @@ class licensePlate {
 
     show() {
         this.box.slideDown();
+        return this;
     }
 
     hide() {
         this.box.slideUp();
+        return this;
     }
 
     next() {
@@ -117,6 +122,13 @@ class licensePlate {
     prev() {
         this.step--;
         this.openStep();
+        return this;
+    }
+
+    go(step = 0) {
+        this.step = step;
+        this.openStep();
+        return this;
     }
 
 }
