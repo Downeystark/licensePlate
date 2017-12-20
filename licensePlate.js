@@ -84,7 +84,7 @@ class licensePlate {
     }
 
     openStep() {
-        let html = '<span class="license-delete">X</span><ul class="license-list">';
+        let html = '<span class="license-delete"></span><ul class="license-list">';
 
         // 步数安全判定
         if (this.step > this.level.length - 1) this.step = this.level.length - 1;
