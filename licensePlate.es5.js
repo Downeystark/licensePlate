@@ -38,13 +38,13 @@ var licensePlate = function () {
             this.box.bind('click', function (e) {
                 if (e.target.tagName === 'TEXT') {
                     _this.value[_this.step] = e.target.innerText;
-                    _this.onPress(_this.value);
-                    if (_this.step === _this.level.length - 1) _this.done(_this.value);
+                    _this.onPress(_this.value, e);
+                    if (_this.step === _this.level.length - 1) _this.done(_this.value, e);
                     _this.next();
                 }
                 if (e.target.className === 'license-delete') {
                     _this.value[_this.step] = '';
-                    _this.onPress(_this.value);
+                    _this.onPress(_this.value, e);
                     _this.prev();
                 }
                 return false;
@@ -119,10 +119,10 @@ licensePlate.DEFAULTS = {
     value: [],
     isOpen: true,
     step: 0,
-    onPress: function onPress(value) {
+    onPress: function onPress(value, e) {
         console.log(value);
     },
-    done: function done(value) {
+    done: function done(value, e) {
         console.log(value);
     }
 };

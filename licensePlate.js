@@ -35,10 +35,10 @@ class licensePlate {
         value: [],
         isOpen: true,
         step: 0,
-        onPress: (value) => {
+        onPress: (value, e) => {
             console.log(value);
         },
-        done: (value) => {
+        done: (value, e) => {
             console.log(value);
         }
     };
@@ -67,13 +67,13 @@ class licensePlate {
         this.box.bind('click', (e) => {
             if (e.target.tagName === 'TEXT') {
                 this.value[this.step] = e.target.innerText;
-                this.onPress(this.value);
-                if (this.step === this.level.length - 1) this.done(this.value);
+                this.onPress(this.value, e);
+                if (this.step === this.level.length - 1) this.done(this.value, e);
                 this.next();
             }
             if (e.target.className === 'license-delete') {
                 this.value[this.step] = '';
-                this.onPress(this.value);
+                this.onPress(this.value, e);
                 this.prev();
             }
             return false;
