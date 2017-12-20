@@ -36,7 +36,6 @@ var licensePlate = function () {
             this.openStep();
 
             this.box.bind('click', function (e) {
-                console.log(e);
                 if (e.target.tagName === 'TEXT') {
                     _this.value[_this.step] = e.target.innerText;
                     _this.onPress(_this.value);
@@ -114,7 +113,7 @@ var licensePlate = function () {
 }();
 
 licensePlate.DEFAULTS = {
-    box: $('<div style="display: none;"></div>'),
+    box: '',
     className: 'license-plate-keyboard-default',
     level: [['京,津,翼,鲁,晋,蒙,辽,吉,黑,沪', '苏,浙,皖,闽,赣,豫,鄂,湘,粤,桂', ',渝,川,贵,云,藏,陜,甘,青,', ',,琼,新,港,澳,台,宁,,'], ['Q,W,E,R,T,Y,U,I,O,P', 'A,S,D,F,G,H,J,K,L,Z', 'X,C,V,B,N,M,,,,'], ['1,2,3,4,5,6,7,8,9,0', 'Q,W,E,R,T,Y,U,P,A,S', 'D,F,G,H,J,K,L,Z,X,C', 'V,B,N,M,,,,,,'], 2, 2, 2, ['1,2,3,4,5,6,7,8,9,0', 'Q,W,E,R,T,Y,U,P,A,S', 'D,F,G,H,J,K,L,Z,X,C', 'V,B,N,M,,,学,领,,']],
     value: [],

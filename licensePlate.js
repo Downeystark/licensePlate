@@ -1,7 +1,7 @@
 class licensePlate {
 
     static DEFAULTS = {
-        box: $('<div style="display: none;"></div>'),
+        box: '',
         className: 'license-plate-keyboard-default',
         level: [
             [
@@ -65,7 +65,6 @@ class licensePlate {
         this.openStep();
 
         this.box.bind('click', (e) => {
-            console.log(e);
             if (e.target.tagName === 'TEXT') {
                 this.value[this.step] = e.target.innerText;
                 this.onPress(this.value);
