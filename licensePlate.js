@@ -72,7 +72,7 @@ class licensePlate {
                 if (this.step === this.level.length - 1) this.done(this.value, e);
                 this.next();
             } else if (e.target.className === 'license-delete') {
-                this.value[this.step] = '';
+                this.value[this.step - 1] = '';
                 this.onPress(this.value, e);
                 this.prev();
             } else if (e.target.className === 'license-btn-hide') {

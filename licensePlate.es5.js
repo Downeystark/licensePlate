@@ -42,7 +42,7 @@ var licensePlate = function () {
                     if (_this.step === _this.level.length - 1) _this.done(_this.value, e);
                     _this.next();
                 } else if (e.target.className === 'license-delete') {
-                    _this.value[_this.step] = '';
+                    _this.value[_this.step - 1] = '';
                     _this.onPress(_this.value, e);
                     _this.prev();
                 } else if (e.target.className === 'license-btn-hide') {
