@@ -2,13 +2,14 @@ class licensePlate {
 
     static DEFAULTS = {
         box: '',
+        title: '',
         className: 'license-plate-keyboard-default',
         level: [
             [
                 '京,津,翼,鲁,晋,蒙,辽,吉,黑,沪',
                 '苏,浙,皖,闽,赣,豫,鄂,湘,粤,桂',
                 ',渝,川,贵,云,藏,陜,甘,青,',
-                ',,琼,新,港,澳,台,宁,,'
+                ',,琼,新,港,澳,台,宁,delete'
             ],
             [
                 'Q,W,E,R,T,Y,U,I,O,P',
@@ -36,10 +37,10 @@ class licensePlate {
         isOpen: true,
         step: 0,
         onPress: (value, e) => {
-            console.log(value);
+            // console.log(value);
         },
         done: (value, e) => {
-            console.log(value);
+            // console.log(value);
         }
     };
 
@@ -47,7 +48,7 @@ class licensePlate {
     constructor(options) {
         Object.assign(this, {...licensePlate.DEFAULTS, ...options});
         this.Init();
-        console.log(this);
+        // console.log(this);
     }
 
     Init() {
@@ -65,26 +66,25 @@ class licensePlate {
         this.openStep();
 
         this.box.bind('click', (e) => {
-            if (e.target.tagName === 'TEXT') {
+            if (e.target.className === 'license-key') {
                 this.value[this.step] = e.target.innerText;
                 this.onPress(this.value, e);
                 if (this.step === this.level.length - 1) this.done(this.value, e);
                 this.next();
-            }
-            if (e.target.className === 'license-delete') {
+            } else if (e.target.className === 'license-delete') {
                 this.value[this.step] = '';
                 this.onPress(this.value, e);
                 this.prev();
+            } else if (e.target.className === 'license-btn-hide') {
+                this.hide();
             }
             return false;
         });
-
         return this;
-
     }
 
     openStep() {
-        let html = '<span class="license-delete"></span><ul class="license-list">';
+        let html = '<p class="license-info"><span class="license-title">' + this.title + '</span><span class="license-btn-hide"></span></p><ul class="license-list">';
 
         // 步数安全判定
         if (this.step > this.level.length - 1) this.step = this.level.length - 1;
@@ -94,7 +94,7 @@ class licensePlate {
         this.level[this.step].forEach((v) => {
             html += '<li>';
             v.split(',').forEach((vv) => {
-                vv === '' ? html += '<i></i>' : html += '<text>' + vv + '</text>';
+                vv === '' ? html += '<i></i>' : (vv === 'delete' ? html += '<i class="license-delete-unit"></i><span class="license-delete"></span>' : html += '<text class="license-key">' + vv + '</text>');
             });
             html += '</li>';
         });

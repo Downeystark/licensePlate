@@ -14,7 +14,7 @@ var licensePlate = function () {
 
         _extends(this, _extends({}, licensePlate.DEFAULTS, options));
         this.Init();
-        console.log(this);
+        // console.log(this);
     }
 
     _createClass(licensePlate, [{
@@ -36,26 +36,26 @@ var licensePlate = function () {
             this.openStep();
 
             this.box.bind('click', function (e) {
-                if (e.target.tagName === 'TEXT') {
+                if (e.target.className === 'license-key') {
                     _this.value[_this.step] = e.target.innerText;
                     _this.onPress(_this.value, e);
                     if (_this.step === _this.level.length - 1) _this.done(_this.value, e);
                     _this.next();
-                }
-                if (e.target.className === 'license-delete') {
+                } else if (e.target.className === 'license-delete') {
                     _this.value[_this.step] = '';
                     _this.onPress(_this.value, e);
                     _this.prev();
+                } else if (e.target.className === 'license-btn-hide') {
+                    _this.hide();
                 }
                 return false;
             });
-
             return this;
         }
     }, {
         key: 'openStep',
         value: function openStep() {
-            var html = '<span class="license-delete"></span><ul class="license-list">';
+            var html = '<p class="license-info"><span class="license-title">' + this.title + '</span><span class="license-btn-hide"></span></p><ul class="license-list">';
 
             // 步数安全判定
             if (this.step > this.level.length - 1) this.step = this.level.length - 1;
@@ -65,7 +65,7 @@ var licensePlate = function () {
             this.level[this.step].forEach(function (v) {
                 html += '<li>';
                 v.split(',').forEach(function (vv) {
-                    vv === '' ? html += '<i></i>' : html += '<text>' + vv + '</text>';
+                    vv === '' ? html += '<i></i>' : vv === 'delete' ? html += '<i class="license-delete-unit"></i><span class="license-delete"></span>' : html += '<text class="license-key">' + vv + '</text>';
                 });
                 html += '</li>';
             });
@@ -114,15 +114,16 @@ var licensePlate = function () {
 
 licensePlate.DEFAULTS = {
     box: '',
+    title: '',
     className: 'license-plate-keyboard-default',
-    level: [['京,津,翼,鲁,晋,蒙,辽,吉,黑,沪', '苏,浙,皖,闽,赣,豫,鄂,湘,粤,桂', ',渝,川,贵,云,藏,陜,甘,青,', ',,琼,新,港,澳,台,宁,,'], ['Q,W,E,R,T,Y,U,I,O,P', 'A,S,D,F,G,H,J,K,L,Z', 'X,C,V,B,N,M,,,,'], ['1,2,3,4,5,6,7,8,9,0', 'Q,W,E,R,T,Y,U,P,A,S', 'D,F,G,H,J,K,L,Z,X,C', 'V,B,N,M,,,,,,'], 2, 2, 2, ['1,2,3,4,5,6,7,8,9,0', 'Q,W,E,R,T,Y,U,P,A,S', 'D,F,G,H,J,K,L,Z,X,C', 'V,B,N,M,,,学,领,,']],
+    level: [['京,津,翼,鲁,晋,蒙,辽,吉,黑,沪', '苏,浙,皖,闽,赣,豫,鄂,湘,粤,桂', ',渝,川,贵,云,藏,陜,甘,青,', ',,琼,新,港,澳,台,宁,delete'], ['Q,W,E,R,T,Y,U,I,O,P', 'A,S,D,F,G,H,J,K,L,Z', 'X,C,V,B,N,M,,,,'], ['1,2,3,4,5,6,7,8,9,0', 'Q,W,E,R,T,Y,U,P,A,S', 'D,F,G,H,J,K,L,Z,X,C', 'V,B,N,M,,,,,,'], 2, 2, 2, ['1,2,3,4,5,6,7,8,9,0', 'Q,W,E,R,T,Y,U,P,A,S', 'D,F,G,H,J,K,L,Z,X,C', 'V,B,N,M,,,学,领,,']],
     value: [],
     isOpen: true,
     step: 0,
     onPress: function onPress(value, e) {
-        console.log(value);
+        // console.log(value);
     },
     done: function done(value, e) {
-        console.log(value);
+        // console.log(value);
     }
 };
