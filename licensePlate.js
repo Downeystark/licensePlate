@@ -65,8 +65,8 @@ class licensePlate {
         $('.block-license-plate-keyboard.' + this.className).remove();
         this.box = $('<div style="display: none;"></div>').addClass('block-license-plate-keyboard ' + this.className);
         $('body').append(this.box);
-        this.step = 0;
-        this.value = [];
+        // this.step = 0;
+        // this.value = [];
 
         this.openStep();
 

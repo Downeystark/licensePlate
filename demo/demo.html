@@ -12,7 +12,7 @@
 
 <div class="demo1">
     <h3>例子1：</h3>
-    <input class="input_one" type="text" placeholder="">
+    <input class="input_one" type="text" value="鲁" placeholder="">
     <button id="btn-remove">例子1键盘移除</button>
 </div>
 
@@ -41,6 +41,8 @@
         var licensePlates1 = new licensePlate({
             title: '示例1键盘',
             className: 'demo_one',
+            value: ['鲁'],
+            step: 1,
             onPress: (value, e) => {
                 console.log(value);
                 $('.input_one').val(value.join(''));
