@@ -53,9 +53,22 @@
         /* 注册键盘2 */
         var licensePlates = new licensePlate({
             className: 'demo_two',
-            onPress: (value) => {
+            onPress: (value, e) => {
                 console.log(value);
-                $('.car-plate').removeClass('active').eq(licensePlates.step).addClass('active').val(value[licensePlates.step]);
+                var ndNow = $('.car-plate').removeClass('active').eq(licensePlates.step);
+                ndNow.val(value[licensePlates.step]);
+                if (e.target.className === 'license-delete') {
+                    if (licensePlates.step === 0) {
+                        ndNow.addClass('active');
+                    } else {
+                        ndNow = ndNow.prev().addClass('active');
+                    }
+                    return false;
+                }
+                ndNow.next().addClass('active');
+                if (licensePlates.step === licensePlates.level.length - 1) {
+                    ndNow.addClass('active');
+                }
             },
         });
 

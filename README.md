@@ -55,24 +55,25 @@ licensePlates.remove();
 参数调用
 
 ```js
+title: '',
 className: 'license-plate-keyboard-default',
 level: [
     [
         '京,津,翼,鲁,晋,蒙,辽,吉,黑,沪',
         '苏,浙,皖,闽,赣,豫,鄂,湘,粤,桂',
         ',渝,川,贵,云,藏,陜,甘,青,',
-        ',,琼,新,港,澳,台,宁,,'
+        ',,琼,新,港,澳,台,宁,delete'
     ],
     [
         'Q,W,E,R,T,Y,U,I,O,P',
         'A,S,D,F,G,H,J,K,L,Z',
-        'X,C,V,B,N,M,,,,'
+        'X,C,V,B,N,M,,,delete'
     ],
     [
         '1,2,3,4,5,6,7,8,9,0',
         'Q,W,E,R,T,Y,U,P,A,S',
         'D,F,G,H,J,K,L,Z,X,C',
-        'V,B,N,M,,,,,,'
+        'V,B,N,M,,,,,delete'
     ],
     2,
     2,
@@ -81,20 +82,20 @@ level: [
         '1,2,3,4,5,6,7,8,9,0',
         'Q,W,E,R,T,Y,U,P,A,S',
         'D,F,G,H,J,K,L,Z,X,C',
-        'V,B,N,M,,,学,领,,'
+        'V,B,N,M,,,学,领,delete'
     ],
 
 ],
 value: [],
-isOpen: true,
+// isOpen: true,
 step: 0,
-onPress: (value) => {
-    console.log(value);
+onPress: (value, e) => {
+    // console.log(value);
 },
-done: (value) => {
-    console.log(value);
+done: (value, e) => {
+    // console.log(value);
 }
-```
+``` 
 
 
 ### 
@@ -106,3 +107,4 @@ done: (value) => {
 
 ## 版本更新
 - 1.0.0 版本完善基本框架键盘，支持多个键盘及链式方法
+- 1.1.0 版本更新新增键盘title，onPress/done回调按下键的dom对象，修复部分bug和优化部分代码

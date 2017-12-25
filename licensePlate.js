@@ -1,3 +1,8 @@
+/*
+* author: downeyin
+* version: 1.1.0
+* git: https://github.com/Downeystark/licensePlate.git
+*/
 class licensePlate {
 
     static DEFAULTS = {
@@ -14,13 +19,13 @@ class licensePlate {
             [
                 'Q,W,E,R,T,Y,U,I,O,P',
                 'A,S,D,F,G,H,J,K,L,Z',
-                'X,C,V,B,N,M,,,,'
+                'X,C,V,B,N,M,,,delete'
             ],
             [
                 '1,2,3,4,5,6,7,8,9,0',
                 'Q,W,E,R,T,Y,U,P,A,S',
                 'D,F,G,H,J,K,L,Z,X,C',
-                'V,B,N,M,,,,,,'
+                'V,B,N,M,,,,,delete'
             ],
             2,
             2,
@@ -29,12 +34,12 @@ class licensePlate {
                 '1,2,3,4,5,6,7,8,9,0',
                 'Q,W,E,R,T,Y,U,P,A,S',
                 'D,F,G,H,J,K,L,Z,X,C',
-                'V,B,N,M,,,学,领,,'
+                'V,B,N,M,,,学,领,delete'
             ],
 
         ],
         value: [],
-        isOpen: true,
+        // isOpen: true,
         step: 0,
         onPress: (value, e) => {
             // console.log(value);
@@ -72,7 +77,7 @@ class licensePlate {
                 if (this.step === this.level.length - 1) this.done(this.value, e);
                 this.next();
             } else if (e.target.className === 'license-delete') {
-                this.value[this.step - 1] = '';
+                this.value[this.step] = '';
                 this.onPress(this.value, e);
                 this.prev();
             } else if (e.target.className === 'license-btn-hide') {
