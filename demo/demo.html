@@ -13,6 +13,7 @@
 <div class="demo1">
     <h3>例子1：</h3>
     <input class="input_one" type="text" placeholder="">
+    <button id="btn-remove">例子1键盘移除</button>
 </div>
 
 <div class="demo2">
@@ -49,6 +50,9 @@
             licensePlates1.show();
         });
 
+        $('#btn-remove').click(function () {
+            licensePlates1.remove();
+        });
 
         /* 注册键盘2 */
         var licensePlates = new licensePlate({
@@ -88,7 +92,7 @@
             if (e.target.className !== 'input_one') {
                 licensePlates1.hide();
             }
-        })
+        });
 
     }
 

@@ -1,8 +1,8 @@
 /*
-* author: downeyin
-* version: 1.1.0
-* git: https://github.com/Downeystark/licensePlate.git
-*/
+ * author: downeyin
+ * version: 1.1.0
+ * git: https://github.com/Downeystark/licensePlate.git
+ */
 class licensePlate {
 
     static DEFAULTS = {
@@ -133,6 +133,10 @@ class licensePlate {
         this.step = step;
         this.openStep();
         return this;
+    }
+
+    remove() {
+        return this.box.remove();
     }
 
 }

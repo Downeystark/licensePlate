@@ -7,10 +7,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /*
-* author: downeyin
-* version: 1.1.0
-* git: https://github.com/Downeystark/licensePlate.git
-*/
+ * author: downeyin
+ * version: 1.1.0
+ * git: https://github.com/Downeystark/licensePlate.git
+ */
 var licensePlate = function () {
 
     /* 构造函数 */
@@ -111,6 +111,11 @@ var licensePlate = function () {
             this.step = step;
             this.openStep();
             return this;
+        }
+    }, {
+        key: 'remove',
+        value: function remove() {
+            return this.box.remove();
         }
     }]);
 
