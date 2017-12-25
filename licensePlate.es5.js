@@ -47,9 +47,9 @@ var licensePlate = function () {
                     if (_this.step === _this.level.length - 1) _this.done(_this.value, e);
                     _this.next();
                 } else if (e.target.className === 'license-delete') {
+                    if (_this.value[_this.step] === '' || _this.value[_this.step] === undefined) _this.prev();
                     _this.value[_this.step] = '';
                     _this.onPress(_this.value, e);
-                    _this.prev();
                 } else if (e.target.className === 'license-btn-hide') {
                     _this.hide();
                 }
@@ -126,7 +126,7 @@ licensePlate.DEFAULTS = {
     box: '',
     title: '',
     className: 'license-plate-keyboard-default',
-    level: [['京,津,翼,鲁,晋,蒙,辽,吉,黑,沪', '苏,浙,皖,闽,赣,豫,鄂,湘,粤,桂', ',渝,川,贵,云,藏,陜,甘,青,', ',,琼,新,港,澳,台,宁,delete'], ['Q,W,E,R,T,Y,U,I,O,P', 'A,S,D,F,G,H,J,K,L,Z', 'X,C,V,B,N,M,,,delete'], ['1,2,3,4,5,6,7,8,9,0', 'Q,W,E,R,T,Y,U,P,A,S', 'D,F,G,H,J,K,L,Z,X,C', 'V,B,N,M,,,,,delete'], 2, 2, 2, ['1,2,3,4,5,6,7,8,9,0', 'Q,W,E,R,T,Y,U,P,A,S', 'D,F,G,H,J,K,L,Z,X,C', 'V,B,N,M,,,学,领,delete']],
+    level: [['京,津,冀,鲁,晋,蒙,辽,吉,黑,沪', '苏,浙,皖,闽,赣,豫,鄂,湘,粤,桂', ',渝,川,贵,云,藏,陕,甘,青,', ',,琼,新,港,澳,台,宁,delete'], ['Q,W,E,R,T,Y,U,I,O,P', 'A,S,D,F,G,H,J,K,L,Z', 'X,C,V,B,N,M,,,delete'], ['1,2,3,4,5,6,7,8,9,0', 'Q,W,E,R,T,Y,U,P,A,S', 'D,F,G,H,J,K,L,Z,X,C', 'V,B,N,M,,,,,delete'], 2, 2, 2, ['1,2,3,4,5,6,7,8,9,0', 'Q,W,E,R,T,Y,U,P,A,S', 'D,F,G,H,J,K,L,Z,X,C', 'V,B,N,M,,,学,领,delete']],
     value: [],
     // isOpen: true,
     step: 0,

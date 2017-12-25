@@ -11,9 +11,9 @@ class licensePlate {
         className: 'license-plate-keyboard-default',
         level: [
             [
-                '京,津,翼,鲁,晋,蒙,辽,吉,黑,沪',
+                '京,津,冀,鲁,晋,蒙,辽,吉,黑,沪',
                 '苏,浙,皖,闽,赣,豫,鄂,湘,粤,桂',
-                ',渝,川,贵,云,藏,陜,甘,青,',
+                ',渝,川,贵,云,藏,陕,甘,青,',
                 ',,琼,新,港,澳,台,宁,delete'
             ],
             [
@@ -77,9 +77,9 @@ class licensePlate {
                 if (this.step === this.level.length - 1) this.done(this.value, e);
                 this.next();
             } else if (e.target.className === 'license-delete') {
+                if (this.value[this.step] === '' || this.value[this.step] === undefined) this.prev();
                 this.value[this.step] = '';
                 this.onPress(this.value, e);
-                this.prev();
             } else if (e.target.className === 'license-btn-hide') {
                 this.hide();
             }
