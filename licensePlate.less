@@ -5,6 +5,7 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 12px 10px;
   z-index: 12;
@@ -43,13 +44,21 @@
   margin-top: -5px;
   margin-bottom: 8px;
   line-height: 1;
+  display: -webkit-flex;
+  display: -moz-box;
   display: flex;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
   justify-content: space-between;
 }
 
 .license-list {
   > li {
+    display: -webkit-flex;
+    display: -moz-box;
     display: flex;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
     justify-content: space-between;
     &:not(:last-child) {
       margin-bottom: 12px;
