@@ -35,8 +35,8 @@ var licensePlate = function () {
             $('.block-license-plate-keyboard.' + this.className).remove();
             this.box = $('<div style="display: none;"></div>').addClass('block-license-plate-keyboard ' + this.className);
             $('body').append(this.box);
-            // this.step = 0;
-            // this.value = [];
+            this.step = this.step !== 0 ? this.step : 0;
+            this.value = this.value.length !== 0 ? this.value : [];
 
             this.openStep();
 
