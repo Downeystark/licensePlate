@@ -1,0 +1,21 @@
+<view style="" a:if="{{isOpen}}" class="license-plate-keyboard {{className}} {{mask?'license-plate-keyboard-mask':''}}">
+  <view class="license-mask" onTap="onClickModal"></view>
+  <view class="license-main">
+    <view class="license-info">
+      <text class="license-title">{{title}}</text>
+      <text class="license-btn-hide" onTap="closeKeyBord"></text>
+    </view>
+    <view class="license-list">
+      <view class="license-list-item" a:for="{{keyBord[step]}}" a:for-item="item">
+        <block a:for="{{item.split(',')}}" a:for-item="v">
+          <block a:if="{{v==='delete'}}">
+            <text class="license-delete-unit"></text>
+            <text class="license-delete" onTap="onDelete"></text>
+          </block>
+          <text class="license-key" onTap="onStep" a:elif="{{v}}" data-value="{{v}}">{{v}}</text>
+          <text class="license-i" a:else></text>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

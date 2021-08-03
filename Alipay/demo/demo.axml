@@ -1,0 +1,23 @@
+<view class="page-addCarPlate">
+  <view class="container">
+    <view class="list">
+      <view class="card">
+        <view class="item3">
+          <view class="label">
+            <text>车牌号码</text>
+            <text class="require">*</text>
+          </view>
+          <view class="car-put-box">
+            <text class="put-box {{index===carIndex?'active':''}} {{item!=='新能源'?'energy':''}}" onTap="onOpenKeyBord"
+                  data-step="{{index}}" a:for="{{carList}}">
+              {{ item }}
+            </text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <license-plates title="车牌号键盘" mask="{{true}}" value="{{carValue}}" closeOnClickModal="{{true}}"
+                  onInputAfter="onInputAfter"></license-plates>
+</view>
